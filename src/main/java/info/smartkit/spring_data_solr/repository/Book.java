@@ -6,10 +6,6 @@ import org.apache.solr.client.solrj.beans.Field;
 
 public class Book {
 
-	public enum Category {
-		EDUCATION, HISTORY, HUMOR, TECHNOLOGY, ROMANCE, ADVENTURE
-	}
-
 	@Field
 	private String id;
 
@@ -52,6 +48,11 @@ public class Book {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+	
+	@Override
+	public String toString() {
+		return "Book [id=" + id + ", description=" + description + ", title=" + name + "]";
 	}
 
 }
