@@ -5,11 +5,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 
 import info.smartkit.spring_data_solr.Application;
-import info.smartkit.spring_data_solr.repository.Book;
-import info.smartkit.spring_data_solr.repository.Category;
+import info.smartkit.spring_data_solr.domain.Book;
+import info.smartkit.spring_data_solr.domain.Category;
 import info.smartkit.spring_data_solr.repository.BookRepository;
 
 import org.junit.Before;

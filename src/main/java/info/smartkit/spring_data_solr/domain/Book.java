@@ -1,4 +1,4 @@
-package info.smartkit.spring_data_solr.repository;
+package info.smartkit.spring_data_solr.domain;
 
 import java.util.List;
 

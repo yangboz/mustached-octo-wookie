@@ -2,6 +2,7 @@ package info.smartkit.spring_data_solr.repository;
 
 import java.util.List;
 
+import info.smartkit.spring_data_solr.domain.Book;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.solr.core.query.result.FacetPage;
