@@ -5,17 +5,23 @@ Walk through Spring-boot with Solr Restful.
 
 1.How to install Solr?
 
-brew install solr
+    brew install solr
 
-2.How to start up?
+2.How to start up Solr?
 
-solr start
+    solr start
 
-mvn spring-boot:run -Dspring.profiles.active=local
+3.How to start up Spring-boot?
 
-3.Where is the Restful result?
+    git clone https://github.com/yangboz/mustached-octo-wookie
+    
+    cd mustached-octo-wookie
 
-http://localhost:8084/api/static/index.html
+    mvn spring-boot:run -Dspring.profiles.active=local
+
+4.Where is the RESTful result?
+
+[http://localhost:8084/api/static/index.html](http://localhost:8084/api/static/index.html)
 
 References:
 =====================
