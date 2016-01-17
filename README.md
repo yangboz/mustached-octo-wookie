@@ -23,6 +23,14 @@ Walk through Spring-boot with Solr Restful.
 
 [http://localhost:8084/api/static/index.html](http://localhost:8084/api/static/index.html)
 
+
+TODO:
+=====================
+
+SwaggerUI from v1 transition to v2
+
+https://github.com/springfox/springfox/blob/master/docs/transitioning-to-v2.md
+
 References:
 =====================
 
@@ -37,3 +45,7 @@ https://github.com/mscharhag/Spring-data-solr-example
 http://www.petrikainulainen.net/spring-data-solr-tutorial/
 
 http://www.mscharhag.com/spring/spring-data-solr-getting-started
+
+http://projects.spring.io/spring-data-solr/
+
+http://www.tamingtext.com/
