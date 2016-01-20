@@ -1,30 +1,22 @@
 package info.smartkit.spring_data_solr.controllers;
 
+import com.wordnik.swagger.annotations.ApiOperation;
 import info.smartkit.spring_data_solr.domain.Book;
 import info.smartkit.spring_data_solr.repository.BookRepository;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.validation.Valid;
-import javax.ws.rs.core.MediaType;
-
+import org.apache.solr.client.solrj.SolrQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.solr.core.query.result.FacetPage;
 import org.springframework.data.solr.core.query.result.HighlightPage;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
-import com.wordnik.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.*;
+import scala.util.parsing.json.JSONObject;
 
-
-import java.util.List;
+import javax.validation.Valid;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Created by yangboz on 10/21/15.

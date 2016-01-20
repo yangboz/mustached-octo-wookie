@@ -1,0 +1,18 @@
+spring:
+  profiles.active: local
+
+---
+spring:
+  profiles: local
+
+  server:
+    contextPath: /api
+    port: 8084
+
+---
+spring:
+  profiles: dev
+
+  server:
+      contextPath: /api
+      port: 8082
