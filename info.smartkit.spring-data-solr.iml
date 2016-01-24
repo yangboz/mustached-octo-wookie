@@ -81,7 +81,6 @@
     <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.6" level="project" />
     <orderEntry type="library" name="Maven: com.mangofactory:swagger-springmvc:0.8.8" level="project" />
     <orderEntry type="library" name="Maven: com.wordnik:swagger-core_2.10:1.3.5" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.module:jackson-module-scala_2.10:2.1.5" level="project" />
     <orderEntry type="library" name="Maven: org.scala-lang:scala-library:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: com.thoughtworks.paranamer:paranamer:2.3" level="project" />
@@ -126,5 +125,27 @@
     <orderEntry type="library" name="Maven: org.apache.opennlp:opennlp-tools:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: net.sf.jwordnet:jwnl:1.3.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.opennlp:opennlp-maxent:3.0.3" level="project" />
+    <orderEntry type="library" name="Maven: org.carrot2:carrot2-core:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.carrot2:morfologik-stemming:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.carrot2:morfologik-fsa:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: net.java.dev.rome:rome:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: net.java.dev.rome:rome-fetcher:1.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jdom:jdom:1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-core:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-analyzers:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-highlighter:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.lucene:lucene-memory:3.6.0" level="project" />
+    <orderEntry type="library" name="Maven: org.simpleframework:simple-xml:2.6.4" level="project" />
+    <orderEntry type="library" name="Maven: xpp3:xpp3:1.1.3.3" level="project" />
+    <orderEntry type="library" name="Maven: com.carrotsearch:hppc:0.4.1" level="project" />
+    <orderEntry type="library" name="Maven: org.carrot2.attributes:attributes-binder:1.0.1" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-core-asl:1.7.4" level="project" />
+    <orderEntry type="library" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.7.4" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.mahout:mahout-math:0.6" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-math:2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.uncommons.maths:uncommons-maths:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: jfree:jcommon:1.0.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.mahout:mahout-collections:1.0" level="project" />
   </component>
 </module>
