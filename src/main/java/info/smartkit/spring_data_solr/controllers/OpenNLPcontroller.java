@@ -3,25 +3,27 @@ package info.smartkit.spring_data_solr.controllers;
 import com.wordnik.swagger.annotations.ApiOperation;
 import info.smartkit.spring_data_solr.repository.BookRepository;
 import opennlp.tools.namefind.NameFinderME;
+import opennlp.tools.namefind.NameSampleDataStream;
 import opennlp.tools.namefind.TokenNameFinderModel;
 import opennlp.tools.tokenize.SimpleTokenizer;
 import opennlp.tools.tokenize.Tokenizer;
+import opennlp.tools.util.PlainTextByLineStream;
 import opennlp.tools.util.Span;
+import opennlp.tools.util.featuregen.AdaptiveFeatureGenerator;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by yangboz on 1/23/16.
@@ -41,12 +43,23 @@ public class OpenNLPcontroller {
     @Autowired
     private Environment env;
 
+    //    private File baseDir = new File("");
+    private File destDir = new File("target");
+
     private File getModelDir() {
 //        String modelsDirProp = System.getProperty("model.dir");
         String modelsDirProp = env.getProperty("model.dir");
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
         LOG.info("modelsDirProp:" + modelsDirProp);
         return new File(classLoader.getResource(modelsDirProp).getFile());
+    }
+
+    private File getBaseDir() {
+//        String modelsDirProp = System.getProperty("model.dir");
+        String trainModelsDirProp = env.getProperty("base.dir");
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        LOG.info("trainModelsDirProp:" + trainModelsDirProp);
+        return new File(classLoader.getResource(trainModelsDirProp).getFile());
     }
 
     private File getPersonModel() {
@@ -174,6 +187,32 @@ public class OpenNLPcontroller {
         }
     }
 
+    @RequestMapping(value = "/models/train/person", method = RequestMethod.GET)
+    @ApiOperation(httpMethod = "GET", value = "Response a Training a named-entity model with OpenNLP that is successfully get or not."
+            , notes = "OpenNLP provides code for training in NameFinderME.main(), which sup- ports options such as specifying the character encoding and a few other features.")
+    public ResponseEntity<Boolean> customTrainPersonModel() throws IOException {
+        File inFile = new File(getBaseDir(), "person.train");
+        NameSampleDataStream nss = new NameSampleDataStream(
+                new PlainTextByLineStream(
+                        new java.io.FileReader(inFile)));
+        int iterations = 100;
+        int cutoff = 5;
+        TokenNameFinderModel model = NameFinderME.train(
+                "en",
+                "person",
+                nss,
+                (AdaptiveFeatureGenerator) null,
+                Collections.<String, Object>emptyMap(),
+                iterations,
+                cutoff);
+        //Save model to file
+        File outFile = new File(destDir, "person-custom.bin");
+        FileOutputStream outFileStream = new FileOutputStream(outFile);
+        model.serialize(outFileStream);
+        LOG.info("trained person model:" + outFile.toString());
+        //
+        return new ResponseEntity<Boolean>(Boolean.TRUE, org.springframework.http.HttpStatus.OK);
+    }
 
     class Annotation implements Comparable<Annotation> {
         private Span span;
