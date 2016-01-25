@@ -1,7 +1,7 @@
 mustached-octo-wookie
 =====================
 
-Walk through Spring-boot with Solr Restful.
+Walk through Spring-boot RESTful with Solr/Tika/OpenNLP/Carrot2/Manhout... based on <<Taming Text>>.
 
 1.How to install Solr?
 
