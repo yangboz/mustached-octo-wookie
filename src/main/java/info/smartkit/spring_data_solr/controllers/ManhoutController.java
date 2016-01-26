@@ -13,6 +13,8 @@ import org.apache.mahout.math.Vector;
 import org.apache.mahout.math.VectorWritable;
 import org.apache.mahout.utils.vectors.io.SequenceFileVectorWriter;
 import org.apache.mahout.utils.vectors.io.VectorWriter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,6 +37,25 @@ public class ManhoutController {
     // ==============
     private static Logger LOG = LogManager.getLogger(ManhoutController.class);
 
+    @Autowired
+    private Environment env;
+
+    private File getBaseDir() {
+//        String modelsDirProp = System.getProperty("model.dir");
+        String baseDirProp = env.getProperty("base.dir");
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        LOG.info("baseDir:" + baseDirProp);
+        return new File(classLoader.getResource(baseDirProp).getFile());
+    }
+
+    private File getTempDir() {
+//        String modelsDirProp = System.getProperty("model.dir");
+        String tmpDirProp = env.getProperty("manhout.tmpdir");
+        ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+        LOG.info("tmpDir:" + tmpDirProp);
+        return new File(classLoader.getResource(tmpDirProp).getFile());
+    }
+
     @RequestMapping(value = "/serializing", method = RequestMethod.GET)
     @ApiOperation(httpMethod = "GET"
             , value = "Serializing vectors to a SequenceFile"
@@ -46,7 +67,9 @@ public class ManhoutController {
         Vector sparse = new SequentialAccessSparseVector(3000);
         //
         File tmpDir = new File(System.getProperty("java.io.tmpdir"));
+//        File tmpLoc = new File(this.getBaseDir() + this.getTempDir().toString(), "sfvwt");
         File tmpLoc = new File(tmpDir, "sfvwt");
+        LOG.info("tmpLoc:" + tmpLoc);
         tmpLoc.mkdirs();
         File tmpFile = File.createTempFile("sfvwt", ".dat", tmpLoc);
         Path path = new Path(tmpFile.getAbsolutePath());
